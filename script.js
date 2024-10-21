@@ -195,6 +195,20 @@ function showStatusMessage(message) {
 }
 
 let discoInterval;  // To store the interval ID so we can stop it later
+let toggleDisco = false;  // To keep track of the Disco Ball state
+
+// Toggle the Disco Ball effect
+function toggleDiscoBall() {
+    if (toggleDisco) {
+        stopDisco();  // Stop the Disco Ball effect
+        toggleDisco = false;
+        showStatusMessage("Disco Ball effect stopped!");
+    } else {
+        startDisco();  // Start the Disco Ball effect
+        toggleDisco = true;
+        showStatusMessage("Disco Ball effect started!");
+    }
+}
 
 // Function to start the Disco Ball effect
 function startDisco() {
@@ -227,4 +241,33 @@ function fillRandomColors() {
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
         cells[i].style.backgroundColor = randomColor;
     }
+}
+
+function generateGrid() {
+    numRows = parseInt(document.getElementById("rowInput").value);
+    numCols = parseInt(document.getElementById("colInput").value);
+
+    const table = document.getElementById("grid");
+    table.innerHTML = ""; // Clear current grid
+
+    for (let i = 0; i < numRows; i++) {
+        const newRow = document.createElement("tr");
+        for (let j = 0; j < numCols; j++) {
+            const newCell = document.createElement("td");
+            newCell.style.backgroundColor = "white";
+            newCell.onclick = function () {
+                this.style.backgroundColor = colorSelected;
+            };
+            newRow.appendChild(newCell);
+        }
+        table.appendChild(newRow);
+    }
+}
+
+function deleteGrid() {
+    const table = document.getElementById("grid");
+    table.innerHTML = "";  // Clear the grid's contents
+    numRows = 0;           // Reset the number of rows
+    numCols = 0;           // Reset the number of columns
+    showStatusMessage("Grid deleted successfully!");  // Optional: Display a status message
 }
