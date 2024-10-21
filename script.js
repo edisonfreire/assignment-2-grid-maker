@@ -193,3 +193,38 @@ function showStatusMessage(message) {
         statusMessageDiv.style.visibility = "hidden";  // Hide the message after 3 seconds
     }, 3000);
 }
+
+let discoInterval;  // To store the interval ID so we can stop it later
+
+// Function to start the Disco Ball effect
+function startDisco() {
+    // Use setInterval to fill the grid with random colors every 200 milliseconds
+    discoInterval = setInterval(fillRandomColors, 200);
+}
+
+// Function to stop the Disco Ball effect
+function stopDisco() {
+    clearInterval(discoInterval);  // Stop the interval
+}
+
+function fillRandomColors() {
+    const colorDropdown = document.getElementById("selectedColorId");
+    const colors = [];
+
+    // Loop through the dropdown options and collect all colors (excluding "SELECT")
+    for (let i = 0; i < colorDropdown.options.length; i++) {
+        const color = colorDropdown.options[i].value;
+        if (color !== "SELECT") {
+            colors.push(color);
+        }
+    }
+
+    // Get all the cells in the grid
+    const cells = document.getElementsByTagName("td");
+
+    // Loop through each cell and assign a random color from the dropdown options
+    for (let i = 0; i < cells.length; i++) {
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        cells[i].style.backgroundColor = randomColor;
+    }
+}
