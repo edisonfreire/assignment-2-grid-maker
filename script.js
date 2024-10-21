@@ -185,9 +185,10 @@ window.onload = function () {
 };
 
 // Function to update the UI with a status message
-function showStatusMessage(message) {
+function showStatusMessage(message, color="green") {
     const statusMessageDiv = document.getElementById("statusMessage");
     statusMessageDiv.textContent = message;  // Set the message
+    statusMessageDiv.style.color = color;
     statusMessageDiv.style.visibility = "visible";  // Make it visible
     setTimeout(() => {
         statusMessageDiv.style.visibility = "hidden";  // Hide the message after 3 seconds
@@ -244,6 +245,10 @@ function fillRandomColors() {
 }
 
 function generateGrid() {
+    if (document.getElementById("rowInput").value == '' || document.getElementById("colInput").value == '') {
+        showStatusMessage("Please enter valid row and column values!", "red");
+        return
+    } 
     numRows = parseInt(document.getElementById("rowInput").value);
     numCols = parseInt(document.getElementById("colInput").value);
 

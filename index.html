@@ -8,59 +8,63 @@
 
 <body>
     <!-- Menu Buttons -->
-    <button onclick="addR()">Add Row</button>
-    <button onclick="addC()">Add Col</button>
-    <button onclick="removeR()">Remove Row</button>
-    <button onclick="removeC()">Remove Col</button>
-    <button onclick="fillU()">Fill All Uncolored</button>
-    <button onclick="fillAll()">Fill All</button>
-    <button onclick="clearAll()">Clear Colors</button>
-    <select onchange="selectColor()" id="selectedColorId">
-        <option value="SELECT">SELECT</option>
-        <option value="Red">Red</option>
-        <option value="Blue">Blue</option>
-        <option value="Green">Green</option>
-        <option value="Yellow">Yellow</option>
-        <option value="Orange">Orange</option>
-        <option value="Purple">Purple</option>
-        <option value="Pink">Pink</option>
-        <option value="Brown">Brown</option>
-        <option value="Black">Black</option>
-        <option value="White">White</option>
-        <option value="Gray">Gray</option>
-        <option value="Cyan">Cyan</option>
-        <option value="Magenta">Magenta</option>
-        <option value="Lime">Lime</option>
-        <option value="Olive">Olive</option>
-        <option value="Teal">Teal</option>
-        <option value="Navy">Navy</option>
-        <option value="Maroon">Maroon</option>
-        <option value="Turquoise">Turquoise</option>
-        <option value="Coral">Coral</option>
-        <option value="Salmon">Salmon</option>
-        <option value="Gold">Gold</option>
-        <option value="Silver">Silver</option>
-        <option value="Lavender">Lavender</option>
-        <option value="Violet">Violet</option>
-        <option value="Indigo">Indigo</option>
-        <option value="Chocolate">Chocolate</option>
-        <option value="Tomato">Tomato</option>
-        <option value="Khaki">Khaki</option>
-        <option value="Plum">Plum</option>
-        <option value="Orchid">Orchid</option>
-        <option value="PeachPuff">PeachPuff</option>
-        <option value="MintCream">MintCream</option>
-    </select>
+    <div>
+        <button onclick="addR()">Add Row</button>
+        <button onclick="addC()">Add Col</button>
+        <button onclick="removeR()">Remove Row</button>
+        <button onclick="removeC()">Remove Col</button>
+        <button onclick="fillU()">Fill All Uncolored</button>
+        <button onclick="fillAll()">Fill All</button>
+        <button onclick="clearAll()">Clear Colors</button>
+        <select onchange="selectColor()" id="selectedColorId">
+            <option value="SELECT">SELECT</option>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
+            <option value="Green">Green</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Orange">Orange</option>
+            <option value="Purple">Purple</option>
+            <option value="Pink">Pink</option>
+            <option value="Brown">Brown</option>
+            <option value="Black">Black</option>
+            <option value="White">White</option>
+            <option value="Gray">Gray</option>
+            <option value="Cyan">Cyan</option>
+            <option value="Magenta">Magenta</option>
+            <option value="Lime">Lime</option>
+            <option value="Olive">Olive</option>
+            <option value="Teal">Teal</option>
+            <option value="Navy">Navy</option>
+            <option value="Maroon">Maroon</option>
+            <option value="Turquoise">Turquoise</option>
+            <option value="Coral">Coral</option>
+            <option value="Salmon">Salmon</option>
+            <option value="Gold">Gold</option>
+            <option value="Silver">Silver</option>
+            <option value="Lavender">Lavender</option>
+            <option value="Violet">Violet</option>
+            <option value="Indigo">Indigo</option>
+            <option value="Chocolate">Chocolate</option>
+            <option value="Tomato">Tomato</option>
+            <option value="Khaki">Khaki</option>
+            <option value="Plum">Plum</option>
+            <option value="Orchid">Orchid</option>
+            <option value="PeachPuff">PeachPuff</option>
+            <option value="MintCream">MintCream</option>
+        </select>
+    </div>
     <!-- Additional functionality -->
-    <button onclick="saveGrid()">Save Grid</button>
-    <button onclick="loadGrid()">Load Grid</button>
-    <button onclick="toggleDiscoBall()">Toggle Disco</button>
-    <label for="rowInput">Rows:</label>
-    <input type="number" id="rowInput" min="1" value="5">
-    <label for="colInput">Columns:</label>
-    <input type="number" id="colInput" min="1" value="5">
-    <button onclick="generateGrid()">Generate Grid</button>
-    <button onclick="deleteGrid()">Delete Grid</button>
+    <div>
+        <button onclick="saveGrid()">Save Grid</button>
+        <button onclick="loadGrid()">Load Grid</button>
+        <button onclick="toggleDiscoBall()">Toggle Disco</button>
+        <label for="rowInput">Rows:</label>
+        <input type="number" id="rowInput" min="1" value="" placeholder="number">
+        <label for="colInput">Columns:</label>
+        <input type="number" id="colInput" min="1" value="" placeholder="number">
+        <button onclick="generateGrid()">Generate Grid</button>
+        <button onclick="deleteGrid()">Delete Grid</button>
+    </div>
 
     <div id="statusMessage" style="margin-top: 20px; font-weight: bold;"></div>
 
