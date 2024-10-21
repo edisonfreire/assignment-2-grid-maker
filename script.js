@@ -120,3 +120,76 @@ function clearAll() {
         cells[i].style.backgroundColor = "white";
     }
 }
+
+// Save the grid state to local storage
+function saveGrid() {
+    const table = document.getElementById("grid");
+    const rows = table.getElementsByTagName("tr");
+    const gridState = [];
+
+    for (let i = 0; i < rows.length; i++) {
+        const row = [];
+        const cells = rows[i].getElementsByTagName("td");
+        for (let j = 0; j < cells.length; j++) {
+            row.push(cells[j].style.backgroundColor); // Store cell colors
+        }
+        gridState.push(row); // Store each row as an array
+    }
+
+    // Save the gridState and dimensions to localStorage
+    localStorage.setItem("gridState", JSON.stringify(gridState));
+    localStorage.setItem("numRows", numRows);
+    localStorage.setItem("numCols", numCols);
+
+    showStatusMessage("Grid state saved successfully!");
+}
+
+// Load the grid state from local storage
+function loadGrid() {
+    const savedGridState = localStorage.getItem("gridState");
+    const savedNumRows = localStorage.getItem("numRows");
+    const savedNumCols = localStorage.getItem("numCols");
+
+    if (savedGridState && savedNumRows && savedNumCols) {
+        const gridState = JSON.parse(savedGridState);
+        numRows = parseInt(savedNumRows);
+        numCols = parseInt(savedNumCols);
+
+        // Clear the current grid
+        const table = document.getElementById("grid");
+        table.innerHTML = "";
+
+        // Rebuild the grid based on the saved state
+        for (let i = 0; i < gridState.length; i++) {
+            const newRow = document.createElement("tr");
+            for (let j = 0; j < gridState[i].length; j++) {
+                const newCell = document.createElement("td");
+                newCell.style.backgroundColor = gridState[i][j]; // Restore saved color
+                newCell.onclick = function () {
+                    this.style.backgroundColor = colorSelected;
+                };
+                newRow.appendChild(newCell);
+            }
+            table.appendChild(newRow);
+        }
+
+        showStatusMessage("Grid state loaded successfully!");
+    } else {
+        showStatusMessage("No saved grid state found.");
+    }
+}
+
+// Automatically load grid on page refresh
+window.onload = function () {
+    loadGrid();
+};
+
+// Function to update the UI with a status message
+function showStatusMessage(message) {
+    const statusMessageDiv = document.getElementById("statusMessage");
+    statusMessageDiv.textContent = message;  // Set the message
+    statusMessageDiv.style.visibility = "visible";  // Make it visible
+    setTimeout(() => {
+        statusMessageDiv.style.visibility = "hidden";  // Hide the message after 3 seconds
+    }, 3000);
+}
