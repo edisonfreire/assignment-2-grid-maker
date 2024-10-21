@@ -251,6 +251,10 @@ function generateGrid() {
     } 
     numRows = parseInt(document.getElementById("rowInput").value);
     numCols = parseInt(document.getElementById("colInput").value);
+    if (numRows < 1 || numCols < 1) {
+        showStatusMessage("Please enter valid row and column values!", "red");
+        return
+    }
 
     const table = document.getElementById("grid");
     table.innerHTML = ""; // Clear current grid
