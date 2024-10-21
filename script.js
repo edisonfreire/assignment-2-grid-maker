@@ -35,7 +35,24 @@ function addR() {
 
 // Add a column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+    const table = document.getElementById("grid");
+
+    if (numRows === 0) {
+        addR(); // If no rows exist, add a row first
+        return;
+    }
+
+    const rows = document.getElementsByTagName("tr");
+    for (let i = 0; i < rows.length; i++) {
+        const newCell = document.createElement("td");
+        newCell.style.backgroundColor = "white"; // Default cell color
+        newCell.onclick = function () {
+            this.style.backgroundColor = colorSelected;
+        };
+        rows[i].appendChild(newCell);
+    }
+
+    numCols++;
 }
 
 // Remove a row
